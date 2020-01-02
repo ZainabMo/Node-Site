@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="container">
+      <fieldset>
+        <form action="/" method="post">
+          <input name="userId" type="text" class="ghost-input" placeholder="Enter a User ID">
+          <input type="submit" class="ghost-button" value="Get Users">
+        </form>
+        <% if(error !== null){ %>
+		      <p><%= error %></p>
+        <% } %>
+          <table style="width:100%">
+            <tr>
+              <th>User ID</th>
+              <th>Total Assets</th>
+              <th>Net Loans</th>
+              <th>Gross Loans</th>
+              <th>Date</th>
+            </tr>
+            <% financialDataArr.forEach((financialData) => { %>        
+              <tr>
+                <% if(financialData.userId !== null){ %>
+                  <td><%= financialData.userId %></td>
+                <% } %>
+                <% if(financialData.totalAssets !== null){ %>
+                    <td><%= financialData.totalAssets %></td>
+                <% } %>
+                <% if(financialData.netLoans !== null){ %>
+                    <td><%= financialData.netLoans %></td>
+                <% } %>
+                <% if(financialData.grossLoans !== null){ %>
+                    <td><%= financialData.grossLoans %></td>
+                <% } %>
+                <% if(financialData.date !== null){ %>
+                    <td><%= financialData.date %></td>
+                <% } %>
+              </tr>
+            <% }) %>
+          </table>
+      </fieldset>
+    </div>
+  </body>
+</html>
